@@ -49,6 +49,13 @@ printfn "Expression: %s" (show expr)
 printfn "Actual: %s" (show actual)
 ```
 
+Results:
+
+```
+Expression: let id = fun x -> x in id id
+Actual: a3 -> a3
+```
+
 ### Well-defined types
 
 AST expression type:
@@ -75,6 +82,18 @@ type public Type =
     | TInt
     | TBool
     | TFun of parameterType:Type * resultType:Type
+```
+
+The inferencer:
+
+```fsharp
+type public InferAlgorithm =
+    | TopDown
+    | BottomUp
+
+[<AutoOpen>]
+module public Inferencer =
+    let infer: InferAlgorithm -> TypeEnv -> Exp -> Type
 ```
 
 ### Requirements
