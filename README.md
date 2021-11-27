@@ -1,6 +1,6 @@
 # Algorithm W and Algorithm M in F#
 
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 [![NuGet TypeInferencer](https://img.shields.io/nuget/v/TypeInferencer.svg?style=flat)](https://www.nuget.org/packages/TypeInferencer)
 [![CI build (main)](https://github.com/kekyo/TypeInferencer/workflows/.NET/badge.svg?branch=main)](https://github.com/kekyo/TypeInferencer/actions?query=branch%3Amain)
@@ -47,6 +47,34 @@ System.Diagnostics.Debug.Assert(
 // Pretty printing
 printfn "Expression: %s" (show expr)
 printfn "Actual: %s" (show actual)
+```
+
+### Well-defined types
+
+AST expression type:
+
+```fsharp
+type public Lit =
+    | LInt of value:int32
+    | LBool of value:bool
+
+type public Exp =
+    | EVar of name:string
+    | ELit of literal:Lit
+    | EApp of func:Exp * arg:Exp
+    | EAbs of name:string * expr:Exp
+    | ELet of name:string * expr:Exp * body:Exp
+    | EFix of func:string * name:string * expr:Exp
+```
+
+Result type type:
+
+```fsharp
+type public Type =
+    | TVar of name:string
+    | TInt
+    | TBool
+    | TFun of parameterType:Type * resultType:Type
 ```
 
 ### Requirements
