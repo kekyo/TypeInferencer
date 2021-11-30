@@ -43,7 +43,7 @@ let f (x:int) : (int -> int) = x:int + 1:int
 * `Algorithm W`は、式の構文木を上(root)から、下(leaf)に向かって、型を確定していきます。
 * `Algorithm M`は逆に、式の構文木の下(leaf)から、上(root)に向かって、型を確定していきます。
 
-（構文木とは、抽象構文木(Abstract syntax tree)の事です。後で示します。）
+（構文木とは、抽象構文木(Abstract syntax tree、略してAST)の事です。後で示します。）
 
 どちらも、推論した結果の意味に違いは出ません。はじめに`Algorithm W`が示され、のちに`Algorithm M`が示されました。何故、異なる方法が研究されたのかというと、`Algorithm M`のほうが、型の問題を発見した箇所を局所化できるからです。
 
@@ -379,7 +379,7 @@ printfn "%d" x
 // [*] 束縛する
 let x = 123
 in
-  // [*] 束縛した変数を参照
+  // [*] 束縛した変数を参照（明示的なスコープ内）
   printfn "%d" x
 ```
 
