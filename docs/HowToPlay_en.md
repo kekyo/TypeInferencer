@@ -2,7 +2,7 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.0.
+The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.1.
 
 This document is intended for the following readers:
 
@@ -270,7 +270,7 @@ let actual = infer TopDown (TypeEnv []) funcexpr
 printfn "%s" (show actual)
 ```
 
-You can specify the variable you want to refer to with `EVar`. You can specify the variable you want to refer to with `EVar`, which is called a "free variable". (Parameter variables are sometimes called "bound variables" because they can be considered bound.)
+You can specify the variable you want to refer to with `EVar`, which is called a "free variable". (Parameter variables are sometimes called "bound variables" because they can be considered bound.)
 
 Although `EVar` and `TVar` are similar, the difference is whether the target is a concrete value or a type.
 
