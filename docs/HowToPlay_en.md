@@ -2,7 +2,7 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.0.
+The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.1.
 
 This document is intended for the following readers:
 
@@ -270,7 +270,7 @@ let actual = infer TopDown (TypeEnv []) funcexpr
 printfn "%s" (show actual)
 ```
 
-You can specify the variable you want to refer to with `EVar`. You can specify the variable you want to refer to with `EVar`, which is called a "free variable". (Parameter variables are sometimes called "bound variables" because they can be considered bound.)
+You can specify the variable you want to refer to with `EVar`, which is called a "free variable". (Parameter variables are sometimes called "bound variables" because they can be considered bound.)
 
 Although `EVar` and `TVar` are similar, the difference is whether the target is a concrete value or a type.
 
@@ -546,4 +546,4 @@ Above is a description of the syntax tree and type inferencing that `TypeInferen
   * In the IDE, you need to use the inference results for the nodes of the partial syntax tree to suggest the types corresponding to the context positions, but `TypeInferencer` discards the types obtained in  partial inferencing.
   * This problem could be solved by storing the inference results for each node.
 
-It would be a good idea to modify and add these from the `TypeInferencer` implementation. As a book that comprehensively covers the above, ["Introduction to Type Systems"](https://www.cis.upenn.edu/~bcpierce/tapl/) is famous, but however, the level of difficulty is quite high, so it is not suitable for beginners. It is better to check the basics with books on "logic" and "symbolic logic" first before engage in.
+It would be a good idea to modify and add these from the `TypeInferencer` implementation. As a book that comprehensively covers the above, ["Types and Programming Languages"](https://www.cis.upenn.edu/~bcpierce/tapl/) is famous, but however, the level of difficulty is quite high, so it is not suitable for beginners. It is better to check the basics with books on "logic" and "symbolic logic" first before engage in.
