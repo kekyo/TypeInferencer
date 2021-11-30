@@ -53,7 +53,10 @@ Actual: a3 -> a3
 
 ## How to play it
 
-[A playing guide is here.](docs/HowToPlay_en.md)
+A playing guide is here:
+
+* [Markdown (inside this repository)](docs/HowToPlay_en.md)
+* [Rendered pdf (pandoc/wkhtmltopdf)](docs/HowToPlay_en.pdf)
 
 ---
 
