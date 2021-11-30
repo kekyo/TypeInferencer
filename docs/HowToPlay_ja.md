@@ -1,8 +1,8 @@
 # はじめての型推論
 
-Copyright (c) Kouji Matsui (@kozy_kekyo, @kekyo2)
+Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer)
+元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer) バージョン 1.0.0
 
 このドキュメントは、以下の読者を想定しています:
 

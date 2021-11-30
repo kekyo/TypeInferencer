@@ -1,8 +1,8 @@
 # How to play type inference
 
-Copyright (c) Kouji Matsui (@kozy_kekyo, @kekyo2)
+Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer)
+The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.0.
 
 This document is intended for the following readers:
 
@@ -183,7 +183,8 @@ type public Lit =
 You may want to try other types of values, but see also the definitions of `TInt` and `TBool` before you do:
 
 ```fsharp
-// A type that indicates the type of the parse tree (see below for TVar and TFun)
+// A type that indicates the type of the syntax tree
+// (see below for TVar and TFun)
 type public Type =
     | TInt
     | TBool
@@ -259,7 +260,8 @@ System.Diagnostics.Debug.Assert(
 Here is also a description of `EVar`, which makes it possible to refer to the parameter argument variable `x` (not `TVar`):
 
 ```fsharp
-// Define an anonymous function and use the parameter variable in the body expression.
+// Define an anonymous function and use the parameter variable
+// in the body expression.
 // `fun x -> x`.
 let funcexpr = EAbs("x", EVar "x")
 
@@ -505,8 +507,8 @@ In fact, this just defines a "recursive function" (and its type is `a0 -> a1`). 
 // `let f = fix fi x = fi x in f 123`
 let expr =
     ELet("f",
-        EFix("fi",   // The name is changed to `fi` for clarity, it is optional.
-            "x",
+        EFix("fi",   // The name is changed to `fi` for clarity,
+            "x",     // it is optional.
             EApp(EVar "fi", EVar "x")),
         EApp(EVar "f", ELit(LInt 123)))
 
