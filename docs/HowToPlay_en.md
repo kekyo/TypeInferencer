@@ -22,9 +22,9 @@ Please note that I am not familiar with it myself, so some parts may be incorrec
 
 ## Type Inference Overview
 
-`TypeInferencer` is a plain and compact implementation of "type inference" used in computer language processing systems. In general, the process of type inference is implemented inside a language processor. The language processors we are most familiar with, such as `F#`, `OCaml`, `Haskell`, and `Java`, have static type systems. Alternatively, dynamically typed systems may do some type inference to optimize their execution.
+`TypeInferencer` is a plain and compact implementation of "type inference." In general, the type inferencer is implemented inside a language processor. The language processors we are most familiar with, such as `F#`, `OCaml`, `Haskell`, and `Java`, have static type systems. Alternatively, dynamic type systems may do some type inference to optimize their execution.
 
-Type inference is the automatic computation and indication of the type of an expression by the processor, without explicitly indicating the type. For example :
+Type inference is the automatic computation and indication of the type of an expression by the processor, without explicitly indicating the type. For example:
 
 ```fsharp
 // [*] F# expression - (1)
@@ -280,7 +280,7 @@ It would not be very interesting to just define an anonymous function. We need t
 
 ### EApp (Function application)
 
-Function application means that you define a function as follows, and the arguments are applied to that function:
+Function application means to define a function and apply it to the arguments as follows:
 
 ```fsharp
 // [*] Define an anonymous function in F#.
@@ -461,7 +461,7 @@ Of course, nesting of `ELet` is also possible, although it is not shown here. Th
 
 ---
 
-### EFix (immovable point)
+### EFix (Fixed point)
 
 In general, recursive functions cannot be defined simply by using `let`:
 
@@ -517,7 +517,7 @@ printfn "%s" (show actual)
 
 Just as the result type could not be inferred in the F# code example, the `TypeInferencer` could not be inferred either. If you return the value of the result, you can infer the type of the value as a clue.
 
-Note that the name `EFix` comes from "fixed point". The concept of fixed point is hard to understand intuitively, so it is better to refer to various references. ([Example from Wikipedia](https://en.wikipedia.org/wiki/Fixed-point_combinator))
+Note that the name `EFix` comes from "fixed point" or "fixed point combinator". The concept of fixed point is hard to understand intuitively, so it is better to refer to various references. ([Example from Wikipedia](https://en.wikipedia.org/wiki/Fixed-point_combinator))
 
 ---
 
