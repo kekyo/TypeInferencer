@@ -37,13 +37,6 @@ let env = TypeEnv []
 // Do inferring with `Algorithm W` (top-down)
 let actual = infer TopDown env expr
 
-// `a -> a`
-System.Diagnostics.Debug.Assert(
-    match actual with
-    | TFun(TVar n1, TVar n2) when n1 = n2 -> true
-    | _ -> false
-)
-
 // Pretty printing
 printfn "Expression: %s" (show expr)
 printfn "Actual: %s" (show actual)
@@ -55,6 +48,19 @@ Results:
 Expression: let id = fun x -> x in id id
 Actual: a3 -> a3
 ```
+
+---
+
+## How to play it
+
+A playing guide is here:
+
+* [Markdown (inside this repository)](docs/HowToPlay_en.md)
+* [Rendered pdf (pandoc/wkhtmltopdf)](docs/HowToPlay_en.pdf)
+
+---
+
+## Basic interface
 
 ### Well-defined types
 
@@ -95,6 +101,8 @@ type public InferAlgorithm =
 module public Inferencer =
     let infer: InferAlgorithm -> TypeEnv -> Exp -> Type
 ```
+
+---
 
 ### Requirements
 
