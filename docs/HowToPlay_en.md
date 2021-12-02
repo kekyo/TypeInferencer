@@ -2,7 +2,7 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.1.
+The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.2.
 
 This document is intended for the following readers:
 
@@ -240,7 +240,6 @@ The function type `TFun` and the type variable `TVar` can also be defined manual
 let typ = TFun(TVar "a0", TInt)
 
 // Make sure it matches exactly - (1)
-let typ = TFun(TVar "a0", TInt)
 System.Diagnostics.Debug.Assert((typ = actual))
 ```
 
@@ -435,11 +434,11 @@ You can see that the type of the function, the result type of applying the funct
 If you look at a complex syntax tree like this, you will notice something. Take a good look at the following code example:
 
 ```fsharp
-// [*] Anonymous function and function application.
-(fun x -> 123) true
-
 // [*] Binding expression.
 let x = true in 123 
+
+// [*] Anonymous function and function application.
+(fun x -> 123) true
 ```
 
 I should have understood this implicitly, but I was surprised when I actually saw the inferred result. In other words, the bound expression can be substituted by a pair of anonymous functions and function application. I will try to verify this on `TypeInferencer`:
