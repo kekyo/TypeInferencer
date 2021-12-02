@@ -2,7 +2,7 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer) バージョン 1.0.1
+元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer) バージョン 1.0.2
 
 このドキュメントは、以下の読者を想定しています:
 
@@ -241,7 +241,6 @@ printfn "%s" (show actual)
 let typ = TFun(TVar "a0", TInt)
 
 // 完全に一致することを確認する - (1)
-let typ = TFun(TVar "a0", TInt)
 System.Diagnostics.Debug.Assert((typ = actual))
 ```
 
@@ -435,11 +434,11 @@ printfn "%s" (show actual)
 このように、複雑な構文木を眺めていると、ある事に気が付きます。以下のコード例を、良く眺めてみてください:
 
 ```fsharp
-// [*] 匿名関数と関数適用の組
-(fun x -> 123) true
-
 // [*] 束縛式
 let x = true in 123 
+
+// [*] 匿名関数と関数適用の組
+(fun x -> 123) true
 ```
 
 私は、この事を、暗黙に理解していたはずですが、実際に推論された結果を見て驚きました。つまり、束縛式は、匿名関数と関数適用の組で代用できます。これを確かめてみます:
