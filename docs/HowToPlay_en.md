@@ -2,7 +2,7 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.2.
+The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.3.
 
 This document is intended for the following readers:
 
@@ -31,7 +31,7 @@ Type inference is the automatic computation and indication of the type of an exp
 let f x = x + 1
 
 // [*] Result of inference - (2)
-let f (x:int) : (int -> int) = x:int + 1:int
+let f (x:int) : (int -> int) = x:int +:(int -> int) 1:int
 ```
 
 * Note: Marked with `[*]` to distinguish F# pseudo code from tries out `TypeInferencer`.
@@ -444,11 +444,11 @@ let x = true in 123
 I should have understood this implicitly, but I was surprised when I actually saw the inferred result. In other words, the bound expression can be substituted by a pair of anonymous functions and function application. I will try to verify this on `TypeInferencer`:
 
 ```fsharp
-// `(fun x -> 123) true`
-let expr1 = EApp(EAbs("x", ELit(LInt 123)), ELit(LBool true))
-
 // `let x = true in 123`
-let expr2 = ELet("x", ELit(LBool true), ELit(LInt 123))
+let expr1 = ELet("x", ELit(LBool true), ELit(LInt 123))
+
+// `(fun x -> 123) true`
+let expr2 = EApp(EAbs("x", ELit(LInt 123)), ELit(LBool true))
 
 // actual1 = actual2 = TInt
 let actual1 = infer TopDown (TypeEnv []) expr1
