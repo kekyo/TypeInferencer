@@ -2,7 +2,7 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer) バージョン 1.0.2
+元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer) バージョン 1.0.3
 
 このドキュメントは、以下の読者を想定しています:
 
@@ -31,7 +31,7 @@ Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 let f x = x + 1
 
 // [*] 推論した結果 - (2)
-let f (x:int) : (int -> int) = x:int + 1:int
+let f (x:int) : (int -> int) = x:int +:(int -> int) 1:int
 ```
 
 * 注意: F#の疑似コードと、`TypeInferencer`を試すコードとを区別出来るように、目印として疑似コードには`[*]`を示します。
@@ -444,11 +444,11 @@ let x = true in 123
 私は、この事を、暗黙に理解していたはずですが、実際に推論された結果を見て驚きました。つまり、束縛式は、匿名関数と関数適用の組で代用できます。これを確かめてみます:
 
 ```fsharp
-// `(fun x -> 123) true`
-let expr1 = EApp(EAbs("x", ELit(LInt 123)), ELit(LBool true))
-
 // `let x = true in 123`
-let expr2 = ELet("x", ELit(LBool true), ELit(LInt 123))
+let expr1 = ELet("x", ELit(LBool true), ELit(LInt 123))
+
+// `(fun x -> 123) true`
+let expr2 = EApp(EAbs("x", ELit(LInt 123)), ELit(LBool true))
 
 // actual1 = actual2 = TInt
 let actual1 = infer TopDown (TypeEnv []) expr1
