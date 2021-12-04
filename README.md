@@ -55,8 +55,8 @@ Actual: a3 -> a3
 
 A playing guide is here:
 
-* [Markdown (inside this repository)](docs/HowToPlay_en.md)
-* [Rendered pdf (pandoc/wkhtmltopdf)](docs/HowToPlay_en.pdf)
+* [Markdown (English, inside this repository)](docs/HowToPlay_en.md), [(In japanese)](docs/HowToPlay_ja.md)
+* [Rendered pdf (English, pandoc/wkhtmltopdf)](docs/HowToPlay_en.pdf)
 
 ---
 
