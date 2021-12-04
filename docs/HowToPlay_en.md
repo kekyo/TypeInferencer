@@ -2,7 +2,9 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer), version 1.0.3.
+Document version 1.0.4
+
+The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer)
 
 This document is intended for the following readers:
 
@@ -31,7 +33,7 @@ Type inference is the automatic computation and indication of the type of an exp
 let f x = x + 1
 
 // [*] Result of inference - (2)
-let f (x:int) : (int -> int) = x:int +:(int -> int) 1:int
+let f (x:int) : (int -> int) = x:int +:(int -> int -> int) 1:int
 ```
 
 * Note: Marked with `[*]` to distinguish F# pseudo code from tries out `TypeInferencer`.
@@ -532,6 +534,7 @@ Above is a description of the syntax tree and type inferencing that `TypeInferen
   * For example, lack for pattern matching expressions and `if ... then ... else`, we cannot define realistic expressions. In the description of `EFix`, we could not show a realistic example of a recursive function because we could not implement a stop condition.
   * It is possible to define a node type like `EIf`, and it has been well researched, so you should follow various articles.
   * It may not be necessary to mention it again, but syntax trees similar to `for` and `while` that constitute loop logic can be defined by applying with `EFix`, since we can construct by recursive functions. Of course, it is also a good idea to try to define node types that correspond directly to these. In that case, we need to face a fundamental question of functional languages: "whether a function returns a value or not."
+  * There is also a way to devise without appending the types of nodes. "Lambda calculus" is a theory that, although it is extremely primitive, all calculations are possible as long as the definition of the "function" and the "application of the function" are sufficient. Since `TypeInferencer` already has` EAbs` and `EApp`, you can build a syntax tree according to lambda calculus.
 * Type annotations cannot be applied to each node of a syntax tree.
   * As shown in the F# example in `EFix`, it is sometimes better to manually annotate some terms with types to make better inferences and help our understanding. You may also want to refer to the existing article on partial type annotation of syntax trees.
 

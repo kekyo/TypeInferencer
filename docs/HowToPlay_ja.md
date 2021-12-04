@@ -2,7 +2,9 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer) バージョン 1.0.3
+ドキュメントバージョン 1.0.4
+
+元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer)
 
 このドキュメントは、以下の読者を想定しています:
 
@@ -31,7 +33,7 @@ Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 let f x = x + 1
 
 // [*] 推論した結果 - (2)
-let f (x:int) : (int -> int) = x:int +:(int -> int) 1:int
+let f (x:int) : (int -> int) = x:int +:(int -> int -> int) 1:int
 ```
 
 * 注意: F#の疑似コードと、`TypeInferencer`を試すコードとを区別出来るように、目印として疑似コードには`[*]`を示します。
@@ -532,6 +534,7 @@ F#のコード例で結果の型が推論できなかったように、`TypeInfe
   * 例えば、パターンマッチ式や`if ... then ... else`に相当する式が無いため、現実的な式を定義できません。`EFix`の解説で、停止条件を実装する事が出来ないため、現実的な再帰関数の例を示せませんでした。
   * `EIf`のようなノードを定義することは可能で、十分に研究されているので、各種論文を追ってみると良いでしょう。
   * 改めて述べるまでも無いかもしれませんが、ループを構成する`for`や`while`に類似する構文木は、再帰関数で構成できるため、`EFix`を応用すれば定義できます。もちろん、これらに直接対応するノード種を定義してみるのも良いと思います。その場合は、関数が値を返すかどうか、と言う、関数型言語の根幹にかかわる問題に向き合う必要があります。
+  * ノードの種類を増やさずに工夫する、と言う方法もあります。「ラムダ計算」は、極めて原始的ではありますが、関数の定義と関数適用さえあれば、全ての計算が可能である、という理論です。`TypeInferencer`には、既に`EAbs`も`EApp`もあるので、ラムダ計算に従った構文木を構築できます。
 * 構文木の各ノードに、型注釈を適用できません。
   * `EFix`のF#の例で示したように、一部の項に手動で型を注釈したほうが、うまく推論出来たり、私たちの理解の助けになることがあります。構文木の部分的な型注釈についても、既存の研究成果を参照すると良いでしょう。
 * 型の合成が出来ません。
