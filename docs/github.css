@@ -61,9 +61,6 @@ h5 tt, h5 code {
 h6 tt, h6 code {
     font-size: inherit; }
 
-h1:before {
-    content: counter(level1)". "; }
-
 h1 {
     page-break-after: avoid;
     counter-increment: level1;
@@ -72,7 +69,7 @@ h1 {
     color: black; }
 
 h2:before {
-    content: counter(level1)"."counter(level2)". "; }
+    content: counter(level2)". "; }
 
 h2 {
     counter-increment: level2;
@@ -82,7 +79,7 @@ h2 {
     color: black; }
 
 h3:before {
-    content: counter(level1)"."counter(level2)"."counter(level3)". "; }
+    content: counter(level2)"."counter(level3)". "; }
 
 h3 {
     counter-increment: level3;
