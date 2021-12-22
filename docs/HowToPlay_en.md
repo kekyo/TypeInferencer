@@ -2,7 +2,7 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-Document version 1.0.4
+Document version 1.0.5
 
 The original documentation can be found here: [TypeInferencer Repository: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer)
 
@@ -208,7 +208,7 @@ The current internal structure of `TypeInferencer` helps us understand it, thank
 
 ---
 
-### EAbs and EVar (Anonymous functions and free variables)
+## EAbs and EVar (Anonymous functions and free variables)
 
 An anonymous function is an expression using `fun` keyword in F#:
 
@@ -281,7 +281,7 @@ It would not be very interesting to just define an anonymous function. We need t
 
 ---
 
-### EApp (Function application)
+## EApp (Function application)
 
 Function application means to define a function and apply it to the arguments as follows:
 
@@ -346,7 +346,7 @@ And there is no way to reconcile a boolean type with a function type `TInt -> a0
 
 ---
 
-### Coffee break
+## Coffee break
 
 Here's an interesting example of an anonymous function definition:
 
@@ -362,7 +362,7 @@ This expression will raise an exception. In fact, we can't infer this syntax tre
 
 ---
 
-### ELet (Binding)
+## ELet (Binding)
 
 This node is equivalent to `let` expression, which has been shown in some examples of F# code. Let's review it just in case:
 
@@ -464,7 +464,7 @@ Of course, nesting of `ELet` is also possible, although it is not shown here. Th
 
 ---
 
-### EFix (Fixed point)
+## EFix (Fixed point)
 
 In general, recursive functions cannot be defined simply by using `let`:
 

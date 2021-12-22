@@ -2,7 +2,7 @@
 
 Copyright (c) Kouji Matsui (k@kekyo.net, @kozy_kekyo, @kekyo2)
 
-ドキュメントバージョン 1.0.4
+ドキュメントバージョン 1.0.5
 
 元のドキュメントはここにあります: [TypeInferencerリポジトリ: https://github.com/kekyo/TypeInferencer](https://github.com/kekyo/TypeInferencer)
 
@@ -209,7 +209,7 @@ type public Type =
 
 ---
 
-### EAbsとEVar（匿名関数と自由変数）
+## EAbsとEVar（匿名関数と自由変数）
 
 匿名関数とは、F#で言うところの、`fun`を使った式の事です:
 
@@ -281,7 +281,7 @@ printfn "%s" (show actual)
 
 ---
 
-### EApp（関数適用）
+## EApp（関数適用）
 
 関数適用とは、以下のように関数を定義して、その関数を引数に適用する事です:
 
@@ -346,7 +346,7 @@ let actual = infer TopDown (TypeEnv []) expr
 
 ---
 
-### Coffee break
+## Coffee break
 
 匿名関数の定義で、面白い例を示します:
 
@@ -362,7 +362,7 @@ let actual = infer TopDown (TypeEnv []) expr
 
 ---
 
-### ELet （束縛）
+## ELet （束縛）
 
 これまで、F#のコード例で散々示してきた`let`に相当するノードです。念のために、おさらいしておきます:
 
@@ -464,7 +464,7 @@ printfn "%s = %s" (show actual1) (show actual2)
 
 ---
 
-### EFix （不動点）
+## EFix （不動点）
 
 一般的に、再帰的な関数は、`let`を使うだけでは定義できません:
 
