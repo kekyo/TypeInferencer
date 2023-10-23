@@ -12,11 +12,5 @@ echo ""
 
 # git clean -xfd
 
-if [ -e artifacts ]; then
-    rm -rf artifacts
-fi
-
-mkdir artifacts
-
-dotnet restore
-dotnet pack -p:Configuration=Release -p:Platform=AnyCPU -o artifacts TypeInferencer/TypeInferencer.fsproj
+dotnet build -p:Configuration=Release -p:Platform="Any CPU" -p:RestoreNoCache=True TypeInferencer.sln
+dotnet pack -p:Configuration=Release -p:Platform="Any CPU" -o artifacts TypeInferencer.sln
