@@ -1,39 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;net48;netstandard2.0;netstandard2.1;netcoreapp2.0;netcoreapp2.1;netcoreapp3.0;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-    <RootNamespace>TypeInferencer</RootNamespace>
-    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <TargetFrameworks>net461;net48;netstandard2.0;netstandard2.1;netcoreapp2.0;netcoreapp2.1;netcoreapp3.0;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <IsPackable>True</IsPackable>
   </PropertyGroup>
 
-  <!-- Packaging information -->
-  <PropertyGroup>
-    <DebugType Condition="'$(Configuration)' == 'Debug'">full</DebugType>
-    <DebugType Condition="('$(Configuration)' == 'Release') AND ('$(TargetFrameworkIdentifier)' == '.NETFramework')">pdbonly</DebugType>
-    <DebugType Condition="('$(Configuration)' == 'Release') AND ('$(TargetFrameworkIdentifier)' != '.NETFramework')">portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <Deterministic Condition="'$(Configuration)' == 'Debug'">false</Deterministic>
-    <Deterministic Condition="'$(Configuration)' == 'Release'">true</Deterministic>
-    <EmbedUntrackedSources Condition="'$(Configuration)' == 'Release'">true</EmbedUntrackedSources>
-    <ContinuousIntegrationBuild Condition="'$(Configuration)' == 'Release'">true</ContinuousIntegrationBuild>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/kekyo/TypeInferencer.git</RepositoryUrl>
-    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-    <Product>TypeInferencer</Product>
-    <Trademark>TypeInferencer</Trademark>
-    <Copyright>Copyright (c) Kouji Matsui</Copyright>
-    <Description>Type inference implementation both Algorithm W and Algorithm M in F#</Description>
-    <Company>Kouji Matsui (@kozy_kekyo, @kekyo2)</Company>
-    <Authors>Kouji Matsui (@kozy_kekyo, @kekyo2)</Authors>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/kekyo/TypeInferencer.git</PackageProjectUrl>
-    <PackageTags>type-inference;algorithmw;algorithmm;functional;ast;fsharp</PackageTags>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
-    <NoWarn>$(NoWarn);NU1604</NoWarn>
-  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="6.0.1" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Include="Types.fs" />
@@ -45,14 +19,6 @@
     <Compile Include="AlgorithmW.fs" />
     <Compile Include="AlgorithmM.fs" />
     <Compile Include="Inferencer.fs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="FSharp.Core" Version="6.0.1" />
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-    <PackageReference Include="RelaxVersioner" Version="2.4.0" PrivateAssets="All" />
-    <PackageReference Condition="'$(Configuration)' == 'Release'" Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

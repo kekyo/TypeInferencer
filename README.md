@@ -112,6 +112,8 @@ module public Inferencer =
 
 * F# 6.0 or upper
 * NuGet package supported platforms:
+  * net8.0
+  * net7.0
   * net6.0
   * net5.0
   * netcoreapp3.1
